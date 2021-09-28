@@ -3,6 +3,54 @@ import axios from 'axios';
 import styled from 'styled-components';
 
 
+const StyledHeader = styled.div`
+display: flex;
+align-items: center;
+flex-direction: column;
+background-color: #85DCB2;
+justify-content: center;
+
+
+
+h1{
+color: #e27d60;
+font-family: sans-serrif;
+}
+
+form{
+  margin: 10%;
+  button{
+    background-color: #C38D9E;
+    width: 30%;
+    border-radius: 10%
+  }
+  input{
+    height: 2vh
+  }
+}
+` 
+const StyledInfo = styled.div`
+background-color: #E8A87C;
+border: 2px solid #C38D9E;
+border-radius: 10%;
+width: 150%;
+align-content: center;
+margin: 10%;
+h2{
+  font-family: sans-serrif;
+  color: white;
+}
+
+p{
+  font-family: comic-sans;
+}
+img{
+  border: 2px dotted black;
+  
+}
+
+
+`
 
 class App extends React.Component {
   state = {
@@ -60,21 +108,22 @@ class App extends React.Component {
   render () {
     
   return (
-    <div className="App">
-      <h1>THE USER CARD</h1>
+    
+    <StyledHeader className="App">
+      <h1>THE USER CARD RETRIEVER</h1>
     <form>
       <input value={this.state.username} onChange={this.handleInput}/>
       <button onClick={this.handleSearch}>Get User</button>
-      <div>
-        <h2>user: {this.state.users.login}</h2>
-        <img width='100'src={this.state.users.avatar_url}/>
-        <h3>followers:{this.state.followers.map(follower => {
+      <StyledInfo>
+        <h2>User: {this.state.users.login}</h2>
+        <img width='150'src={this.state.users.avatar_url}/>
+        <h2>Followers:{this.state.followers.map(follower => {
           return(<p>{follower.login}</p>)
         })}
-        </h3>
-      </div>
+        </h2>
+      </StyledInfo>
     </form>
-    </div>
+    </StyledHeader>
 
     );
   }
